@@ -1,0 +1,41 @@
+<div class="sitters-container">
+    <h1 class="page-title">Top Pet Sitters Near You</h1>
+  
+    <div *ngFor="let sitter of sitters; let i = index" class="sitter-card">
+      <!-- Sitter Header -->
+      <div class="sitter-header">
+        <img [src]="sitter.image" alt="{{ sitter.name }}" class="sitter-img" />
+        <div class="sitter-info">
+          <h2>{{ i + 1 }}. {{ sitter.name }} <span class="badge" *ngIf="sitter.isStar">Star Sitter</span></h2>
+          <p>{{ sitter.description }}</p>
+          <p class="sitter-location">{{ sitter.location }}</p>
+        </div>
+        <div class="sitter-price">
+          <p>from</p>
+          <span>£{{ sitter.price }}</span>
+          <p>per night</p>
+        </div>
+      </div>
+  
+      <!-- Sitter Reviews and Details -->
+      <div class="sitter-details">
+        <div class="rating">
+          ⭐ {{ sitter.rating }} • {{ sitter.reviews }} reviews
+        </div>
+        <div class="repeat-owners">
+          ♻️ {{ sitter.repeatOwners }} repeat pet owners
+        </div>
+      </div>
+  
+      <!-- Sitter Availability -->
+      <div class="sitter-availability">
+        <p>
+          Availability updated {{ sitter.availability }} days ago
+        </p>
+        <p *ngIf="sitter.confirmation" class="confirmed-availability">
+          Confirmed availability for Christmas, Boxing Day and New Year
+        </p>
+      </div>
+    </div>
+  </div>
+  

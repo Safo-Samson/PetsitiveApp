@@ -1,0 +1,121 @@
+.sitters-container {
+    max-width: 900px;
+    margin: 20px auto;
+    font-family: 'Arial', sans-serif;
+  
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    .sitter-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      padding: 15px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s;
+  
+      &:hover {
+        transform: scale(1.02);
+      }
+  
+      .sitter-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+  
+        .sitter-img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          margin-right: 15px;
+        }
+  
+        .sitter-info {
+          flex: 1;
+  
+          h2 {
+            font-size: 1.2rem;
+            color: #333;
+            display: flex;
+            align-items: center;
+  
+            .badge {
+              background-color: #ffcd3c;
+              color: #333;
+              padding: 3px 8px;
+              margin-left: 10px;
+              border-radius: 5px;
+              font-size: 0.8rem;
+            }
+          }
+  
+          p {
+            margin: 2px 0;
+            font-size: 0.9rem;
+            color: #666;
+          }
+  
+          .sitter-location {
+            font-weight: bold;
+            color: #444;
+          }
+        }
+  
+        .sitter-price {
+          text-align: center;
+  
+          p {
+            margin: 0;
+            font-size: 0.8rem;
+            color: #888;
+          }
+  
+          span {
+            font-size: 1.5rem;
+            color: #0056b3;
+            font-weight: bold;
+          }
+        }
+      }
+  
+      .sitter-details {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+  
+        .rating,
+        .repeat-owners {
+          font-size: 0.9rem;
+          color: #444;
+        }
+      }
+  
+      .sitter-availability {
+        font-size: 0.9rem;
+        color: #555;
+  
+        .confirmed-availability {
+          color: #007bff;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .sitter-header {
+      flex-direction: column;
+      align-items: flex-start;
+  
+      .sitter-price {
+        margin-top: 10px;
+      }
+    }
+  }
+  

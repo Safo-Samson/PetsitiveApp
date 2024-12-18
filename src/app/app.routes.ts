@@ -5,10 +5,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { SignInComponent } from './sign-in/sign-in.component';
 import { FilterComponent } from './filter/filter.component';
+import { SitterCardComponent } from './sitter-card/sitter-card.component';
 
 export const routes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'filter', component: FilterComponent },
+  {path: 'sitters', component: SitterCardComponent}
 ];
 
 // @NgModule({

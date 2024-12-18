@@ -1,45 +1,60 @@
 <div class="filter-container">
-    <h1>Find the Perfect Match</h1>
-  
-    <!-- Pet Type -->
-    <div class="pet-selection">
-      <p>I'm looking for a service for my:</p>
-      <label>
-        <input type="checkbox" checked />
-        <span>Dog</span>
-      </label>
-      <label>
-        <input type="checkbox" />
-        <span>Cat</span>
-      </label>
-    </div>
-  
-    <!-- Service Selection -->
-    <div class="service-selection">
-      <p>Which service do you need?</p>
-      <div class="service-options">
-        <div class="service active">Boarding</div>
-        <div class="service">House Sitting</div>
-        <div class="service">Drop-In Visits</div>
-        <div class="service">Doggy Day Care</div>
-        <div class="service">Dog Walking</div>
+  <h1>Find the Perfect Match</h1>
+
+  <!-- Pet Type -->
+  <div class="pet-selection">
+    <p>I'm looking for a service for my:</p>
+    <div class="pet-options">
+      <div
+        *ngFor="let pet of pets"
+        class="pet"
+        [class.active]="selectedPet === pet.name"
+        (click)="setSelectedPet(pet.name)"
+      >
+        <i [class]="pet.icon"></i>
+        <span>{{ pet.name }}</span>
       </div>
     </div>
-  
-    <!-- Address Input -->
-    <div class="address-input">
-      <p>What's your address?</p>
-      <input type="text" placeholder="Postcode or Address" />
+  </div>
+
+  <!-- Service Selection -->
+  <div class="service-selection">
+    <p>Which service do you need?</p>
+    <div class="service-options">
+      <div
+        *ngFor="let service of services"
+        class="service"
+        [class.active]="activeService === service.name"
+        (click)="setActiveService(service.name)"
+      >
+        <i [class]="service.icon"></i>
+        <span>{{ service.name }}</span>
+      </div>
     </div>
-  
-    <!-- Date Selection -->
-    <div class="date-selection">
-      <p>Which dates do you need?</p>
-      <input type="date" placeholder="Drop off" />
-      <input type="date" placeholder="Pick up" />
+  </div>
+
+  <!-- Address Input -->
+  <div class="address-input">
+    <p>What's your address?</p>
+    <input type="text" placeholder="Postcode or Address" />
+  </div>
+
+  <!-- Date Selection -->
+  <div class="date-selection">
+    <p>Which dates do you need?</p>
+    <div class="date-inputs">
+      <div class="date-field">
+        <label for="dropOff">From:</label>
+        <input type="date" id="dropOff" placeholder="Drop off" />
+      </div>
+      <div class="date-field">
+        <label for="pickUp">To:</label>
+        <input type="date" id="pickUp" placeholder="Pick up" />
+      </div>
     </div>
-  
-    <!-- Next Button -->
-    <button class="next-button">Next</button>
   </div>
   
+
+  <!-- Next Button -->
+  <button (click)="onFilter()" class="next-button">Next</button>
+</div>
