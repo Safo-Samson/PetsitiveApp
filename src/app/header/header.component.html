@@ -1,0 +1,21 @@
+<header class="header">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="/src/assets/logo.png" alt="App Logo" />
+      <span class="app-name">PetSitiveApp</span>
+    </div>
+  
+    <!-- Hamburger Menu -->
+    <nav class="menu">
+      <button class="hamburger" (click)="toggleMenu()">
+        <span>&#9776;</span>
+      </button>
+      <!-- Dropdown Menu -->
+      <ul class="menu-items" [ngClass]="{ 'show': isMenuOpen }">
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  
