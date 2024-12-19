@@ -1,0 +1,99 @@
+/* Global Styles */
+.landing-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.204);
+  }
+  
+  /* Header Section */
+  header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #4a90e2;
+  }
+  
+  header p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  
+  /* User Selection Cards */
+  .user-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .card {
+    background-color: #f9f9fb;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+  }
+
+
+  
+  .card img {
+    width: 100px; /* Set a fixed width */
+    height: 100px; /* Set a fixed height to maintain consistency */
+    margin-bottom: 15px;
+    object-fit: cover; /* Ensures the image fits within the dimensions without distortion */
+    border: 1px solid gray;
+    border-radius: 50%; /* Optional: Makes the images circular */
+}
+  
+  .card h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+  
+  .card button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #6173ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .card button:hover {
+    background-color: #4c5bdb;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .user-selection {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .card {
+      width: 100%;
+    }
+  }
+  

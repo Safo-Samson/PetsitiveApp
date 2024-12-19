@@ -1,0 +1,23 @@
+<div class="landing-container">
+    <header>
+      <h1>Welcome to Petsitive Match</h1>
+      <p>Your trusted platform for connecting pet sitters and pet owners.</p>
+    </header>
+    <div class="user-selection">
+      <!-- Card for Pet Owners -->
+      <div class="card pet-owner" (click)="navigateTo('customer')">
+        <img src="assets/petowner.jpeg" alt="Pet Owner Icon" />
+        <h2>Pet Owners</h2>
+        <p>Looking for trusted pet care? Find reliable sitters today.</p>
+        <button>Sign In as a Customer</button>
+      </div>
+      <!-- Card for Pet Sitters -->
+      <div class="card pet-sitter" (click)="navigateTo('petsitter')">
+        <img src="../../assets/petsitter.jpeg" alt="Pet Sitter Icon" />
+        <h2>Pet Sitters</h2>
+        <p>Love pets? Join us to provide care and earn money.</p>
+        <button>Sign In as a Pet Sitter</button>
+      </div>
+    </div>
+  </div>
+  
