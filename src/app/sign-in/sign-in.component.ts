@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsMod
 })
 export class SignInComponent {
   signUpForm: FormGroup;
+  isLoading = false; // Add loading state
 
   constructor(private fb: FormBuilder, private router: Router) {
     // Initialize the form with validators
@@ -27,8 +28,14 @@ export class SignInComponent {
 
   onRegister() {
     if (this.signUpForm.valid) {
+      this.isLoading = true; // Show loading screen
       console.log('Form Submitted:', this.signUpForm.value);
-      this.router.navigate(['/filter']); // Redirect to filter page
+
+      // Simulate an API call with a timeout
+      setTimeout(() => {
+        this.isLoading = false; // Hide loading screen
+        this.router.navigate(['/filter']); // Redirect to filter page
+      }, 2000); // Simulated delay
     } else {
       console.log('Form is invalid!');
       this.signUpForm.markAllAsTouched(); // Show validation errors

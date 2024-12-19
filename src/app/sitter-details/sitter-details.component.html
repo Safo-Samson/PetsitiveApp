@@ -1,0 +1,31 @@
+<div class="sitter-details-container">
+    <div class="sitter-header">
+      <img [src]="sitter.image" alt="{{sitter.name}}" class="sitter-profile-image" />
+      <h1 class="sitter-name">{{ sitter.name }}</h1>
+      <p class="sitter-location">{{ sitter.location }}</p>
+      <p class="sitter-description">{{ sitter.description }}</p>
+    </div>
+  
+    <div class="sitter-details">
+      <div class="sitter-detail-item">
+        <strong>Price:</strong> <span>£{{ sitter.price }}/day</span>
+      </div>
+      <div class="sitter-detail-item">
+        <strong>Rating:</strong> <span>{{ sitter.rating }} ({{ sitter.reviews }} reviews)</span>
+      </div>
+      <div class="sitter-detail-item">
+        <strong>Repeat Owners:</strong> <span>{{ sitter.repeatOwners }}</span>
+      </div>
+      <div class="sitter-detail-item">
+        <strong>Availability:</strong> <span>{{ sitter.availability }} slots left</span>
+      </div>
+      <div *ngIf="sitter.confirmation" class="sitter-detail-item">
+        <strong>Instant Booking:</strong> <span>Available</span>
+      </div>
+    </div>
+  
+    <button class="message-button" (click)="showNotImplementedPopup()">
+      <i class="fas fa-envelope"></i> Send a Message
+    </button>
+  </div>
+  

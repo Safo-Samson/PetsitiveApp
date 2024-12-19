@@ -17,6 +17,38 @@
     </div>
   </div>
 
+  <!-- Additional Filters for Pets -->
+<div class="additional-filters" *ngIf="selectedPet === 'Dog' || selectedPet === 'Cat'">
+  <p>Additional filters for {{ selectedPet }}:</p>
+  <div class="filters-container">
+    <!-- Weight Filter -->
+    <div class="filter-group">
+      <label for="weight">Weight:</label>
+      <select id="weight" [(ngModel)]="filters.weight">
+        <option value="">Select weight</option>
+        <option *ngFor="let weight of petFilters.weightOptions" [value]="weight">{{ weight }}</option>
+      </select>
+    </div>
+
+    <!-- Breed Filter -->
+    <div class="filter-group" *ngIf="selectedPet === 'Dog'">
+      <label for="breed">Breed:</label>
+      <select id="breed" [(ngModel)]="filters.breed">
+        <option value="">Select breed</option>
+        <option *ngFor="let breed of petFilters.dogBreeds" [value]="breed">{{ breed }}</option>
+      </select>
+    </div>
+
+    <div class="filter-group" *ngIf="selectedPet === 'Cat'">
+      <label for="breed">Breed:</label>
+      <select id="breed" [(ngModel)]="filters.breed">
+        <option value="">Select breed</option>
+        <option *ngFor="let breed of petFilters.catBreeds" [value]="breed">{{ breed }}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
   <!-- Service Selection -->
   <div class="service-selection">
     <p>Which service do you need?</p>
@@ -34,10 +66,10 @@
   </div>
 
   <!-- Address Input -->
-  <div class="address-input">
-    <p>What's your address?</p>
+  <!-- <div class="address-input">
+    <p>What's your Postcode?</p>
     <input type="text" placeholder="Postcode or Address" />
-  </div>
+  </div> -->
 
   <!-- Date Selection -->
   <div class="date-selection">
@@ -57,4 +89,10 @@
 
   <!-- Next Button -->
   <button (click)="onFilter()" class="next-button">Next</button>
+
+  <!-- Loading Screen -->
+<div class="loading-screen" *ngIf="isLoading">
+  <div class="loader"></div>
+  <p>Matching best sitter...</p>
+</div>
 </div>

@@ -1,7 +1,7 @@
 <div class="sitters-container">
     <h1 class="page-title">Top Pet Sitters Near You</h1>
   
-    <div *ngFor="let sitter of sitters; let i = index" class="sitter-card">
+    <div *ngFor="let sitter of sitters; let i = index" class="sitter-card" (click)="viewSitterDetails(sitter)">
       <!-- Sitter Header -->
       <div class="sitter-header">
         <img [src]="sitter.image" alt="{{ sitter.name }}" class="sitter-img" />

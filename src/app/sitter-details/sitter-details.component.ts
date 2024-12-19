@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-sitter-card',
-  templateUrl: './sitter-card.component.html',
-  styleUrls: ['./sitter-card.component.scss'],
+  selector: 'app-sitter-details',
+  templateUrl: './sitter-details.component.html',
   imports: [CommonModule],
-  standalone: true,
+  styleUrls: ['./sitter-details.component.scss'],
 })
-export class SitterCardComponent {
+export class SitterDetailsComponent implements OnInit {
+  sitter: any;
+
   sitters = [
     {
       name: 'Moira M.',
@@ -143,13 +144,14 @@ export class SitterCardComponent {
     },
   ];
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute) {}
 
-  viewSitterDetails(sitter: any) {
-    this.router.navigate(['/sitterdetail', sitter.name]);
+  ngOnInit(): void {
+    const sitterName = this.route.snapshot.paramMap.get('name');
+    this.sitter = this.sitters.find((s) => s.name === sitterName);
   }
-  
 
+  showNotImplementedPopup(): void {
+    alert('This feature is not yet implemented due to time constraints.');
+  }
 }
-
-

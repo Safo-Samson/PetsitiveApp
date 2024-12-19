@@ -68,4 +68,10 @@
 
     <button type="submit">Register</button>
   </form>
+
+  <!-- Loading screen -->
+  <div class="loading-screen" *ngIf="isLoading">
+    <div class="spinner"></div>
+    <p>Registering...</p>
+  </div>
 </div>
