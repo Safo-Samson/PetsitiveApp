@@ -1,5 +1,16 @@
 <div class="sitters-container">
     <h1 class="page-title">Top Pet Sitters Near You</h1>
+
+    <!-- Sorting Controls -->
+  <div class="sorting-controls">
+    <label for="sort-options">Sort by:</label>
+    <select id="sort-options" [(ngModel)]="sortOption" (change)="sortSitters()">
+      <option value="priceAsc">Price: Low to High</option>
+      <option value="priceDesc">Price: High to Low</option>
+      <option value="reviewsAsc">Reviews: Low to High</option>
+      <option value="reviewsDesc">Reviews: High to Low</option>
+    </select>
+  </div>
   
     <div *ngFor="let sitter of sitters; let i = index" class="sitter-card" (click)="viewSitterDetails(sitter)">
       <!-- Sitter Header -->

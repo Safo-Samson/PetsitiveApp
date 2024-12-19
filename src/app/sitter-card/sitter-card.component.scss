@@ -10,6 +10,21 @@
       color: #333;
       margin-bottom: 20px;
     }
+
+    .sorting-controls {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    #sort-options {
+      padding: 8px;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
   
     .sitter-card {
       display: flex;

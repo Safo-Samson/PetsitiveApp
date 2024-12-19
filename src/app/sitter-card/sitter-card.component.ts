@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-sitter-card',
   templateUrl: './sitter-card.component.html',
   styleUrls: ['./sitter-card.component.scss'],
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   standalone: true,
 })
 export class SitterCardComponent {
@@ -143,10 +144,24 @@ export class SitterCardComponent {
     },
   ];
 
+  sortOption = ''; // Default sorting option
+
   constructor(private router: Router) {}
 
   viewSitterDetails(sitter: any) {
     this.router.navigate(['/sitterdetail', sitter.name]);
+  }
+
+  sortSitters() {
+    if (this.sortOption === 'priceAsc') {
+      this.sitters.sort((a, b) => a.price - b.price);
+    } else if (this.sortOption === 'priceDesc') {
+      this.sitters.sort((a, b) => b.price - a.price);
+    } else if (this.sortOption === 'reviewsAsc') {
+      this.sitters.sort((a, b) => a.reviews - b.reviews);
+    } else if (this.sortOption === 'reviewsDesc') {
+      this.sitters.sort((a, b) => b.reviews - a.reviews);
+    }
   }
   
 

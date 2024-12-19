@@ -1,0 +1,84 @@
+<div class="container">
+    <h1>Register as a Pet Sitter</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <!-- Pet Sitting Services -->
+      <div class="services-selection">
+        <h2>Select Services You Offer</h2>
+        <ul class="services-list">
+          <li *ngFor="let service of servicesWithDetails">
+            <label>
+              <input type="checkbox" [value]="service.name" (change)="onServiceSelect(service.name)" />
+              <div class="service-item">
+                <!-- <img [src]="service.icon" alt="{{ service.name }} icon" class="service-icon" /> -->
+                <i [class]="service.icon"></i>
+                <div class="service-details">
+                  <h3>{{ service.name }}</h3>
+                  <p>{{ service.description }}</p>
+                </div>
+                <div class="service-average">
+                  <span>Avg. {{ service.price }}</span>
+                </div>
+              </div>
+            </label>
+          </li>
+        </ul>
+      </div>
+      
+  
+      <!-- Personal Information -->
+      <div class="full-width">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName" required />
+      </div>
+  
+      <div class="full-width">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName" required />
+      </div>
+  
+      <div class="full-width">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email" required />
+      </div>
+  
+      <div class="full-width">
+        <label for="address">Postcode</label>
+        <textarea id="address" formControlName="address" rows="1"></textarea>
+      </div>
+  
+      <div class="full-width">
+        <label for="bio">Tell Us About Yourself</label>
+        <textarea id="bio" formControlName="bio" rows="5"></textarea>
+      </div>
+  
+      <!-- Testimonials Request Section -->
+      <h2>Request Testimonials</h2>
+      <div formArrayName="testimonials" class="testimonials-section">
+        <div *ngFor="let control of testimonialControls; let i = index" class="testimonial-row">
+          <div class="testimonial-field">
+            <label>Email {{ i + 1 }}</label>
+            <input type="email" [formControlName]="i" placeholder="Enter email address" required />
+          </div>
+          <button 
+            type="button" 
+            class="remove-btn" 
+            (click)="removeTestimonial(i)" 
+            *ngIf="testimonialControls.length > 1">
+            ✖ Remove
+          </button>
+        </div>
+        <button 
+          type="button" 
+          class="add-btn" 
+          (click)="addTestimonial()" 
+          [disabled]="testimonialControls.length >= 5">
+          + Add Another Email
+        </button>
+      </div>
+      
+  
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="signupForm.invalid">Submit</button>
+    </form>
+  </div>
+  
