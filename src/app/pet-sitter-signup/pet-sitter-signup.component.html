@@ -50,6 +50,38 @@
         <label for="bio">Tell Us About Yourself</label>
         <textarea id="bio" formControlName="bio" rows="5"></textarea>
       </div>
+
+   <!-- Add Certifications Section -->
+<h2>Add Certifications</h2>
+<div class="certifications-section">
+  <div *ngFor="let control of certificationControls; let i = index" class="certification-row">
+    <div class="certification-field">
+      <label>Certification {{ i + 1 }}</label>
+      <input
+        type="file"
+        (change)="onFileChange($event, i)"
+        accept=".pdf,.jpg,.jpeg,.png"
+      />
+    </div>
+    <button
+      type="button"
+      class="remove-btn"
+      (click)="removeCertification(i)"
+      *ngIf="certificationControls.length > 0"
+    >
+      ✖ Remove
+    </button>
+  </div>
+  <button
+    type="button"
+    class="add-btn"
+    (click)="addCertification()"
+    [disabled]="certificationControls.length >= 3"
+  >
+    + Add Certification
+  </button>
+</div>
+
   
       <!-- Testimonials Request Section -->
       <h2>Request Testimonials</h2>

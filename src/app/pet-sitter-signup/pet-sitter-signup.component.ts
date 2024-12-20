@@ -40,7 +40,7 @@ export class PetSitterSignupComponent {
       name: 'Dog Walking',
       description: 'Dog walks that fit your schedule',
       price: '£11.00/walk',
-      icon: 'fas fa-dog' ,
+      icon: 'fas fa-dog',
     },
   ];
 
@@ -53,20 +53,21 @@ export class PetSitterSignupComponent {
       address: ['', Validators.required],
       bio: [''],
       testimonials: this.fb.array([this.createTestimonialControl()]),
+      certifications: this.fb.array([]), // Updated to FormGroup
     });
   }
 
   selectedServices: string[] = [];
 
-onServiceSelect(service: string) {
-  const index = this.selectedServices.indexOf(service);
-  if (index > -1) {
-    this.selectedServices.splice(index, 1);
-  } else {
-    this.selectedServices.push(service);
+  onServiceSelect(service: string) {
+    const index = this.selectedServices.indexOf(service);
+    if (index > -1) {
+      this.selectedServices.splice(index, 1);
+    } else {
+      this.selectedServices.push(service);
+    }
+    this.signupForm.patchValue({ services: this.selectedServices });
   }
-  this.signupForm.patchValue({ services: this.selectedServices });
-}
 
   get testimonialControls() {
     return (this.signupForm.get('testimonials') as FormArray).controls;
@@ -86,8 +87,45 @@ onServiceSelect(service: string) {
     testimonials.removeAt(index);
   }
 
+
+  get certificationControls() {
+    return (this.signupForm.get('certifications') as FormArray).controls;
+  }
+
+  createCertificationControl() {
+    return this.fb.group({
+      file: [null, Validators.required],
+    });
+  }
+
+  addCertification() {
+    const certifications = this.signupForm.get('certifications') as FormArray;
+    if (certifications.length < 3) {
+      certifications.push(this.createCertificationControl());
+    }
+  }
+
+  removeCertification(index: number) {
+    const certifications = this.signupForm.get('certifications') as FormArray;
+    certifications.removeAt(index);
+  }
+
+  onFileChange(event: any, index: number) {
+    const file = event.target.files[0];
+    if (file) {
+      const certifications = this.signupForm.get('certifications') as FormArray;
+      certifications.at(index).patchValue({ file });
+    }
+  }
+
   onSubmit() {
     if (this.signupForm.valid) {
+      const formData = new FormData();
+      this.signupForm.value.certifications.forEach((cert: any, index: number) => {
+        if (cert.file) {
+          formData.append(`certification_${index + 1}`, cert.file);
+        }
+      });
       console.log(this.signupForm.value);
       alert('Registration successful!');
     }
